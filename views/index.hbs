@@ -1,65 +1,87 @@
-<form action="/" method="post" class="form">
-  <div class="title">Choose your specification</div>
-  <hr>
-  <div class="label">
-    <label for="length" class="space">Password Length</label>
-    <div class="have_small">
-      <input type="number" name="length" id="length" min="4" max="16" value="{{option.length}}">
-      <small class="small">Length is availabe between 4 ~ 16</small>
+<div class="container mt-5">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand"><i class="fa-solid fa-heart fa-flip"></i> 隨機密碼產生器 <i
+          class="fa-solid fa-heart fa-flip"></i></a>
     </div>
-  </div>
+  </nav>
 
-  <div class="label">
-    <label for="uppercase">Include Uppercases Characters</label>
-    <div>
-      <input type="checkbox" name="uppercase" id="uppercase" {{#if option.uppercase}}checked{{/if}}> (e.g. ABCDE)
+  <form action="/" method="post" class="form">
+    <hr>
+    <div class="mb-3">
+      <h5>選擇你的需求！</h5>
     </div>
-  </div>
+    <div class="label mb-3">
+      <label for="length" class="space form-label">密碼長度</label>
+      <div class="have_small">
+        <input type="number" name="length" id="length" min="4" max="16" value="{{option.length}}">
+        <small class="small">介在4-16個字元之間</small>
+      </div>
+    </div>
 
-  <div class="label">
-    <label for="lowercase">Include Lowercases Characters</label>
-    <div>
-      <input type="checkbox" name="lowercase" id="lowercase" {{#if option.lowercase}}checked{{/if}}> (e.g. abcde)
+    <div class="label mb-3">
+      <label for="uppercase" class="form-label">包含大寫英文</label>
+      <div>
+        <input type="checkbox" name="uppercase" id="uppercase" {{#if option.uppercase}}checked{{/if}}> (e.g. ABCDE)
+      </div>
     </div>
-  </div>
 
-  <div class="label">
-    <label for="number">Include Numbers</label>
-    <div>
-      <input type="checkbox" name="number" id="number" {{#if option.number}}checked{{/if}}> (e.g. 12345)
+    <div class="label mb-3">
+      <label for="lowercase" class="form-label">包含小寫英文</label>
+      <div>
+        <input type="checkbox" name="lowercase" id="lowercase" {{#if option.lowercase}}checked{{/if}}> (e.g. abcde)
+      </div>
     </div>
-  </div>
 
-  <div class="label">
-    <label for="symbol">Include Symbols</label>
-    <div>
-      <input type="checkbox" name="symbol" id="symbol" {{#if option.symbol}}checked{{/if}}> (e.g. @#$%^)
+    <div class="label mb-3">
+      <label for="number" class="form-label">包含數字</label>
+      <div>
+        <input type="checkbox" name="number" id="number" {{#if option.number}}checked{{/if}}> (e.g. 12345)
+      </div>
     </div>
-  </div>
 
-  <div class="label">
-    <label for="exclude">Exclude Characters</label>
-    <div class="have_small">
-      <input type="text" name="exclude" id="exclude" value="{{option.exclude}}">
-      <small class="small">This characters will not appear in the password</small>
+    <div class="label mb-3">
+      <label for="symbol" class="form-label">包含符號</label>
+      <div>
+        <input type="checkbox" name="symbol" id="symbol" {{#if option.symbol}}checked{{/if}}> (e.g. @#$%^)
+      </div>
     </div>
-  </div>
+
+    <div class="label mb-3">
+      <label for="exclude" class="form-label">排除字元</label>
+      <div class="have-small">
+        <input type="text" name="exclude" id="exclude" value="{{option.exclude}}">
+        <small class="small">這些字元將不會出現在密碼中</small>
+      </div>
+    </div>
+
+    <div class="submit-botton mb-3">
+      <button type="submit" class="submit btn btn-outline-dark">產生密碼 <i
+          class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    </div>
+
+  </form>
 
   {{#if password}}
-  <div class="password">
-    <div>
-      Your Password: <code id="code">{{password}}</code>
+  <div class="result mb-3">
+    <div class="password mb-3">
+      <h5>你的密碼是: <code id="code">{{password}}</code></h5>
     </div>
-    <button class="button" type="button" onclick="copy()">Copy
-      <span class="material-symbols-outlined">
-        content_copy
-      </span>
-    </button>
+    <div class="copy-home mb-3">
+      <button class="button btn btn-outline-dark" type="button" onclick="copy()">複製
+        <span class="material-symbols-outlined">
+          <i class="fa-solid fa-copy"></i>
+        </span>
+      </button>
+
+      <button class="button btn btn-outline-dark" type="button"><a href="http://localhost:3000/home"
+          class="back-home">回到首頁 <i class="fa-solid fa-house"></i></a></button>
+    </div>
   </div>
   {{/if}}
 
-</form>
-<button type="submit" class="submit">Generate Password</button>
+
+</div>
 
 <script>
   const submitBtn = document.querySelector('.submit')

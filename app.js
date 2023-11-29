@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/home', (req, res) => {
+  res.redirect('/')
+})
+
 
 app.post('/', (req, res) => {
   const option = req.body;
